@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 
 import com.example.demo.DTO.Message;
+import com.example.demo.DTO.TypingMessage;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -16,9 +17,12 @@ public class ChatController {
     }
 
     @MessageMapping("/chat.typing")
-    @SendTo("/chat/typing")
-    public String typing(String user){
-        return  user;
+    @SendTo("/topic/typing")
+    public TypingMessage typing(TypingMessage message){
+        return  message;
     }
 
 }
+
+
+
